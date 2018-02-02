@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>find_max_curvature</name>
+  <version>0.1.0</version>
+  <description>find_max_curvature package</description>
+
+  <maintainer email="mizuno.naoki@rm.is.tohoku.ac.jp">Naoki Mizuno</maintainer>
+
+  <license>MIT</license>
+
+
+  <author>Naoki Mizuno</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>numpy</run_depend>
+  <run_depend>nav_msgs</run_depend>
+</package>

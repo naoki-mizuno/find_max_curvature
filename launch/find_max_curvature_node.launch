@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="find_max_curvature" type="find_max_curvature_node.py" name="find_max_curvature" >
+  </node>
+</launch>
