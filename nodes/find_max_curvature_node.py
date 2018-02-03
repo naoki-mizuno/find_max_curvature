@@ -78,14 +78,17 @@ def make_label(p, kappa, marker_id):
     return m
 
 
-def publish_marker(p, kappa, marker_id):
+def publish_marker(bad_kappas):
     global marker_pub
     global show_labels
 
+    marker_id = 0
     ma = MarkerArray()
-    ma.markers.append(make_sphere(p, marker_id))
-    if show_labels:
-        ma.markers.append(make_label(p, kappa, marker_id))
+    for p, kappa in bad_kappas:
+        ma.markers.append(make_sphere(p, marker_id))
+        if show_labels:
+            ma.markers.append(make_label(p, kappa, marker_id))
+        marker_id += 1
     marker_pub.publish(ma)
 
 
@@ -112,11 +115,8 @@ def path_cb(msg):
 
     if len(bad_kappas) == 0:
         rospy.loginfo('All points in the path were OK!')
-
-    marker_id = 0
-    for pose, kappa in bad_kappas:
-        publish_marker(pose, kappa, marker_id)
-        marker_id += 1
+    else:
+        publish_marker(bad_kappas)
 
 
 rospy.init_node('find_max_curvature_node')
